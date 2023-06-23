@@ -14,9 +14,6 @@
               - SecurityUpdates  
               - CriticalUpdates
               - Updates
-              - Tools
-              - Definition Updates
-              - UpdateRollups
               reboot: yes
               reboot_timeout: 1100
               log_path: 'c:/Log-Windows-Update.txt'
