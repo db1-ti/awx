@@ -1,5 +1,5 @@
-- name: Ansible win_command module example  
-   hosts: windows # host group to run the module on       
+- name: NETSTAT 
+   hosts: WIN_SERVER
    tasks: 
-   -  name: run an executable command on a remote Windows system
+   -  name: RODANDO NETSTAT
       win_command: netstat -e # win_command is a Windows module
