@@ -1,28 +1,5 @@
----
-- name: Update Windows systems
-  hosts: WIN_SERVER  
-  gather_facts: false
-  become: yes
-
-  tasks:
-    - name: Check for Windows updates
-      win_updates:
-        category_names:
-          - CriticalUpdates
-          - SecurityUpdates
-          - UpdateRollups
-          - ServicePacks
-          - DefinitionUpdates
-        state: searched
-      register: update_result
-
-    - name: Install Windows updates
-      win_updates:
-        category_names:
-          - CriticalUpdates
-          - SecurityUpdates
-          - UpdateRollups
-          - ServicePacks
-          - DefinitionUpdates
-        state: installed
-      when: update_result.updates | length > 0
+- name: Ansible win_command module example  
+   hosts: windows # host group to run the module on       
+   tasks: 
+   -  name: run an executable command on a remote Windows system
+      win_command: netstat -e # win_command is a Windows module
