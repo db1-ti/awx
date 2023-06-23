@@ -1,8 +1,33 @@
 ---
-- hosts: WIN_SERVER
-  - name: Install all security, critical, and rollup updates without a scheduled task
-    win_updates:
-      category_names:
-        - SecurityUpdates
-        - CriticalUpdates
-        - UpdateRollups
+  - hosts: all
+    serial: 5
+    order: shuffle
+    vars:
+      reboot: "{{reboot}}"
+   
+    tasks:
+
+         ## 1º - WINDOWS UPDATE
+          - name: REBOOT AUTOMÁTICO | Iniciando atualização
+            win_updates:
+              category_names:
+              - SecurityUpdates  
+              - CriticalUpdates
+              - Updates
+              - Feature Packs
+              - Tools
+              - Windows Server 2019
+              - Windows Server 2016
+              - Windows Server 2012
+              - Windows Server 2008
+              - Windows Server 2008 R2
+              - Definition Updates
+              - Microsoft Defender Antivirus
+              - UpdateRollups
+              reboot: yes
+              reboot_timeout: 1100
+              log_path: 'c:/Log-Windows-Update.txt'
+            register: status  
+            until: status.changed != ""
+            retries: 10
+            delay: 60
