@@ -1,6 +1,6 @@
 ---
 - name: Update Windows systems
-  hosts: DATACENTER_SERVERS 
+  hosts: WIN_SERVER  
   gather_facts: false
   become: yes
 
