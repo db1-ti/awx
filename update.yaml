@@ -15,13 +15,7 @@
               - CriticalUpdates
               - Updates
               - Tools
-              - Windows Server 2019
-              - Windows Server 2016
-              - Windows Server 2012
-              - Windows Server 2008
-              - Windows Server 2008 R2
               - Definition Updates
-              - Microsoft Defender Antivirus
               - UpdateRollups
               reboot: yes
               reboot_timeout: 1100
