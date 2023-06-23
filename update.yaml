@@ -1,13 +1,9 @@
 ---
 - hosts: WIN_SERVER
-tasks:
-- name: windows_updates
-win_updates:
-reboot_timeout: 1200
-log_path: undefined
-whitelist: undefined
-category_names: Application;Connectors;CriticalUpdates;DefinitionUpdates;DeveloperKits;FeaturePacks;Guidance;SecurityUpdates;ServicePacks;Tools;UpdateRollups;
-reboot: yes # not required. Ansible will automatically reboot the remote host if it is required and continue to install updates after the reboot.,
-use_scheduled_task: no # not required
-blacklist: undefined # not required. A list of update titles or KB numbers that can be used to specify which updates are to be excluded from installation
-state: searched #state: searched
+  tasks:
+  - name: Install all security, critical, and rollup updates without a scheduled task
+    win_updates:
+      category_names:
+        - SecurityUpdates
+        - CriticalUpdates
+        - UpdateRollups
