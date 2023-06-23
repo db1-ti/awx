@@ -1,5 +1,5 @@
-- name: WINDOWS_UPDATE 
-  hosts: WIN_SERVER
+---
+- hosts: WIN_SERVER
   tasks:
   - name: Choose which Windows updates to install
   win_updates:
