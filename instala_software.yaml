@@ -1,0 +1,11 @@
+---
+    - name: Instala software via choco
+      hosts: all
+      gather_facts: no
+      vars:
+        app: "{{ps_comando}}"
+      tasks:
+        - name: "Instalando"
+          win_shell:  choco install "{{ps_comando}}" -y
+          register: powershell
+        - debug: msg={{powershell}}    
