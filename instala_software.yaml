@@ -7,6 +7,6 @@
         operacao: "{{ps_op}}"
       tasks:
         - name: "Instalando"
-          win_shell:  "{{ps_op}}" "{{ps_app}}" -y
+          win_shell:  choco "{{ps_op}}" "{{ps_app}}" -y
           register: powershell
         - debug: msg={{powershell}}    
