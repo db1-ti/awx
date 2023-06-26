@@ -3,9 +3,9 @@
       hosts: all
       gather_facts: no
       vars:
-        app: "{{ps_comando}}"
+        app: "{{ps_app}}"
       tasks:
         - name: "Instalando"
-          win_shell:  choco install "{{ps_comando}}" -y
+          win_shell:  choco install "{{ps_app}}" -y
           register: powershell
         - debug: msg={{powershell}}    
