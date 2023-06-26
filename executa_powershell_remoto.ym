@@ -1,0 +1,11 @@
+---
+    - name: Executando Powershell remoto
+      hosts: all
+      gather_facts: no
+      vars:
+        app: "{{ps_comando}}"
+      tasks:
+        - name: "Excecutando"
+          win_shell:  "{{ps_comando}}"
+          register: powershell
+        - debug: msg={{powershell}}    
