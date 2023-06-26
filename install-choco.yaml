@@ -2,5 +2,5 @@
   hosts: all
   tasks: 
   - win_get_url:
-    url: https://raw.githubusercontent.com/db1-ti/awx/main/install-choco.ps1
-    dest: C:\temp\install-choco.ps1
+      url: https://raw.githubusercontent.com/db1-ti/awx/main/install-choco.ps1
+      dest: C:\temp\install-choco.ps1
