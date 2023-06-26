@@ -1,5 +1,5 @@
 - name: NETSTAT 
-  hosts: WIN_SERVER
+  hosts: all
   tasks: 
   - name: RODANDO NETSTAT
     win_command: netstat -e # win_command is a Windows module
