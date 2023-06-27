@@ -7,6 +7,6 @@
         operacao: "{{ps_op}}"
       tasks:
         - name: "Instalando"
-          win_shell:  choco "{{ps_op}}" "{{ps_app}}" -y
+          win_shell:  C:\ProgramData\chocolatey\bin\choco.exe "{{ps_op}}" "{{ps_app}}" -y
           register: powershell
         - debug: msg={{powershell}}    
