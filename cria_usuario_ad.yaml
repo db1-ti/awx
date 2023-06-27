@@ -28,4 +28,4 @@
            register: saida_shell
          - debug:
              msg: "{{saida_shell}}"  
-       when: opcao == "NAO"
+       when: opcao == "CONSIGNET"
