@@ -3,16 +3,12 @@
     serial: 5
     order: shuffle
     vars:
-      reboot: "{{reboot}}"
-   
+      reboot: "{{reboot}}" 
     tasks:
-
          ## 1º - WINDOWS UPDATE
           - name: REBOOT AUTOMÁTICO | Iniciando atualização
             win_updates:
               category_names:
-              - SecurityUpdates  
-              - CriticalUpdates
               - Updates
               reboot: yes
               reboot_timeout: 1100
