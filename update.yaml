@@ -1,19 +1,14 @@
----
-  - hosts: all
-    serial: 5
-    order: shuffle
-    vars:
-      reboot: "{{reboot}}" 
-    tasks:
-         ## 1º - WINDOWS UPDATE
-          - name: REBOOT AUTOMÁTICO | Iniciando atualização
-            win_updates:
-              category_names:
-              - Updates
-              reboot: yes
-              reboot_timeout: 1100
-              log_path: 'c:/Log-Windows-Update.txt'
-            register: status  
-            until: status.changed != ""
-            retries: 10
-            delay: 60
+- name: update windows systems
+  hosts: all
+  gather_facts: True
+  become: no
+  vars:
+    win_update_category_names:
+      - CriticalUpdates
+      - DefinitionUpdates
+      - SecurityUpdates
+      - UpdateRollups
+      - Updates
+        
+  roles:
+    - oatakan.windows_update
