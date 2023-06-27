@@ -10,7 +10,7 @@
      - name: INICIO | CRIANDO USUARIO ANYMARKET
        block:
          - name: Iniciando VM | Executando PowerShell Script
-           win_shell:  New-ADUser -Name {{usuario}} -SamAccountName {{usuario}} - Displayname {{nome}} -AccountPassword (ConvertTo-SecureString -AsPlainText "!@#Mudar" -Force) -Enabled $true -Path ‘OU=Ativos,DC=db1,DC=com,DC=br‘ 
+           win_shell:  New-ADUser -Name {{usuario}} -SamAccountName {{usuario}} -Displayname {{nome}} -AccountPassword (ConvertTo-SecureString -AsPlainText "!@#Mudar" -Force) -Enabled $true -Path "OU=Ativos,DC=db1,DC=com,DC=br"
            register: saida_shell
          - debug:
              msg: "{{saida_shell}}"  
