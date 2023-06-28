@@ -16,7 +16,7 @@
         - name: "Criando conta local - CSG"
           block:
             - name: em "{{ps_ou}}"      
-              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" cgs-admin Csg_Z023@db1 2>c:\temp\erros-cgs.txt
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" cgs-admin C0nsig@@#DB12 2>c:\temp\erros-cgs.txt
               register: powershell
             - debug: msg={{powershell}}   
           when: ps_ou == "OU=Consignet-Mixtra,OU=Computadores,DC=db1,DC=com,DC=br"
