@@ -8,15 +8,63 @@
         - name: "Criando conta local - ANYMARKET"
           block:
             - name: em "{{ps_ou}}"    
-              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" any-admin Any_Z023@db1
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" any-admin Any_Z023@db1 2>c:\temp\erros-anymarket.txt
               register: powershell
             - debug: msg={{powershell}}   
           when: ps_ou == "OU=Anymarket,OU=Computadores,DC=db1,DC=com,DC=br"
         
+        - name: "Criando conta local - CSG"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" cgs-admin Csg_Z023@db1 2>c:\temp\erros-cgs.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=Consignet-Mixtra,OU=Computadores,DC=db1,DC=com,DC=br"
+
         - name: "Criando conta local - DGS"
           block:
             - name: em "{{ps_ou}}"      
-              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" dgs-admin Dgs_Z023@db1
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" dgs-admin Dgs_Z023@db1 2>c:\temp\erros-dgs.txt
               register: powershell
             - debug: msg={{powershell}}   
           when: ps_ou == "OU=DGS,OU=Computadores,DC=db1,DC=com,DC=br"
+
+        - name: "Criando conta local - DUCZ"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" dcz-admin Dcz_Z023@db1 2>c:\temp\erros-dcz.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=Ducz,OU=Computadores,DC=db1,DC=com,DC=br"
+
+        - name: "Criando conta local - Holding"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" hol-admin Hol_Z023@db1 2>c:\temp\erros-hol.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=Holding,OU=Computadores,DC=db1,DC=com,DC=br"
+
+        - name: "Criando conta local - Koncili"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" kon-admin Kon_Z023@db1 2>c:\temp\erros-kon.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=Koncili,OU=Computadores,DC=db1,DC=com,DC=br"
+
+        - name: "Criando conta local - My kids"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" myk-admin Myk_Z023@db1 2>c:\temp\erros-mykids.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=MyKids,OU=Computadores,DC=db1,DC=com,DC=br"
+
+        - name: "Criando conta local - Predize"
+          block:
+            - name: em "{{ps_ou}}"      
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" pre-admin Pre_Z023@db1 2>c:\temp\erros-pre.txt
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=Predize,OU=Computadores,DC=db1,DC=com,DC=br"
