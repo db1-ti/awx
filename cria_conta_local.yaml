@@ -3,7 +3,7 @@
       hosts: all
       gather_facts: no
       vars:
-        app: "{{ps_comando}}"
+        app: "{{ps_ou}}"
       tasks:
         - name: "Criando conta local"
           block:
