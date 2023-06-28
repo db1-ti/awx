@@ -5,12 +5,17 @@
       vars:
         app: "{{ps_comando}}"
       tasks:
-        - name: "Criando conta local - MAQUINA DO ANYMARKET"
+        - name: "Criando conta local"
           block:
-            - name: Executando powershell       
-              win_shell:  c:\script\insere-conta-admin-args.ps1 "{{ps_uou}}" any-admin Any_Z023@db1
+            - name: MAQUINA DO ANYMARKET       
+              win_shell:  c:\script\insere-conta-admin-args.ps1 "{{ps_ou}}" any-admin Any_Z023@db1
               register: powershell
             - debug: msg={{powershell}}   
           when: ps_ou == "OU=Anymarket,OU=Computadores,DC=db1,DC=com,DC=br"
 
-  
+          block:
+            - name: MAQUINA DA DGS       
+              win_shell:  c:\script\insere-conta-admin-args.ps1 "{{ps_ou}}" dgs-admin Dgs_Z023@db1
+              register: powershell
+            - debug: msg={{powershell}}   
+          when: ps_ou == "OU=DGS,OU=Computadores,DC=db1,DC=com,DC=br"
