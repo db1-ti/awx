@@ -1,1 +1,12 @@
-
+---
+    - name: Executando Powershell remoto
+      hosts: all
+      gather_facts: no
+      vars:
+        app: "{{ps_comando}}"
+      tasks:
+        - name: "Excecutando"
+          win_shell:  c:\script\insere-conta-admin-args.ps1 "{{ps_uou}}" "{{ps_conta}}" "{{ps_senha}}"
+          register: powershell
+        - debug: msg={{powershell}}   
+        
