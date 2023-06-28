@@ -32,7 +32,7 @@
         - name: "Criando conta local - DUCZ"
           block:
             - name: em "{{ps_ou}}"      
-              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" dcz-admin Dcz_Z023@db1 2>c:\temp\erros-dcz.txt
+              win_shell:  c:\scripts\insere-conta-admin-args.ps1 "{{ps_ou}}" "dcz-admin" "Dcz_Z023@db1" 2>c:\temp\erros-dcz.txt
               register: powershell
             - debug: msg={{powershell}}   
           when: ps_ou == "OU=Ducz,OU=Computadores,DC=db1,DC=com,DC=br"
