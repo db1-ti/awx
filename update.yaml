@@ -3,11 +3,28 @@
   gather_facts: False
   become: no
   vars:
-    win_update_category_names:
-      - CriticalUpdates
-      - DefinitionUpdates
-      - SecurityUpdates
-      - UpdateRollups
-      - Updates     
-  roles:
-    - oatakan.windows_update
+  tasks:
+    - name: UPDATE | Windows Update com reboot
+      block:
+        - name: Running Windows Update - REBOOT SE NECESSÁRIO
+          win_updates:
+            category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+          register: result
+         # output results
+        - debug: var=result
+    
+         # reboot only if required
+        - win_reboot:
+          when: result.reboot_required
+      when: reiniciar == "sim"
+
+    - name: UPDATE | Windows Update sem reboot
+      block:
+        - name: Running Windows Update - SEM REBOOT
+          win_updates:
+            category_names: ['SecurityUpdates','CriticalUpdates','UpdateRollups', 'Updates', 'DefinitionUpdates']
+            reboot: no
+          register: result
+         # output results
+        - debug: var=result
+      when: reiniciar == "nao"
