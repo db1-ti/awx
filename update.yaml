@@ -1,6 +1,6 @@
 - name: update windows systems
   hosts: all
-  gather_facts: True
+  gather_facts: False
   become: no
   vars:
     win_update_category_names:
@@ -8,7 +8,6 @@
       - DefinitionUpdates
       - SecurityUpdates
       - UpdateRollups
-      - Updates
-        
+      - Updates     
   roles:
     - oatakan.windows_update
